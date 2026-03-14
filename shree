@@ -1,0 +1,18 @@
+ipeline {
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                git url: 'https://github.com/bshreeraksha12-ai/sadhixproject.git', branch: 'main'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sshagent(['nginx-ssh-2-11']) {
+                    sh '''
+                    scp -o StrictHostKeyChecking=no -r * ubuntu@54.89.191.37:/var/www/html/
+                    '''
+                }
+            }
