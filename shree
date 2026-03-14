@@ -13,7 +13,7 @@ pipeline {
                 sshagent(['nginx-ssh-2-11']) {
                     sh '''
                     scp -o StrictHostKeyChecking=no -r * ubuntu@54.89.191.37:/var/www/html/
-                    '''
+                    '''}
                 }
             }
       }
